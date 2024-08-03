@@ -1,0 +1,560 @@
+<!DOCTYPE html><html><head><base href="https://multi-tool.ai/personal/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Multi-Outils Personnalisé</title>
+<style>
+  :root {
+    /* Dark theme (default) */
+    --primary-color: #121212;
+    --secondary-color: #1E1E1E;
+    --accent-color: #6200EE;
+    --text-color: #E0E0E0;
+    --highlight-color: #00E5FF;
+    --logo-color: #0000FF;
+    --hacking-color: #00FF00;
+    --linux-color: #FFA500;
+    --archive-color: #9C27B0;
+    --fmhy-color: #FF4081;
+  }
+
+  /* Light theme */
+  [data-theme="light"] {
+    --primary-color: #F5F5F5;
+    --secondary-color: #FFFFFF;
+    --accent-color: #6200EE;
+    --text-color: #333333;
+    --highlight-color: #00B8D4;
+    --logo-color: #0000FF;
+    --hacking-color: #4CAF50;
+    --linux-color: #FF9800;
+    --archive-color: #9C27B0;
+    --fmhy-color: #E91E63;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  header {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: background-color 0.3s ease;
+    position: relative;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--logo-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+
+  .nav-links a:hover {
+    color: var(--highlight-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+  }
+
+  main {
+    flex-grow: 1;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .tool-card {
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .tool-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .tool-card h2 {
+    color: var(--accent-color);
+    margin-top: 0;
+  }
+
+  .tool-card p {
+    margin-bottom: 1rem;
+  }
+
+  .tool-card button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tool-card button:hover {
+    background-color: #7C4DFF;
+    transform: scale(1.1);
+  }
+
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  #password-popup {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  #password-popup input {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    width: 200px;
+  }
+
+  #password-popup button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #password-popup button:hover {
+    background-color: #7C4DFF;
+  }
+
+  .blurred {
+    filter: blur(10px);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  #hacking-tools { border-left: 4px solid var(--hacking-color); }
+  #linux-tools { border-left: 4px solid var(--linux-color); }
+  #archive-tools { border-left: 4px solid var(--archive-color); }
+  #fmhy-tools { border-left: 4px solid var(--fmhy-color); }
+
+  #digital-clock {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid var(--accent-color);
+    background-color: var(--primary-color);
+    position: sticky;
+    bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      grid-template-columns: 1fr;
+    }
+    .nav-links {
+      flex-direction: column;
+    }
+  }
+
+  /* Accessibility improvements */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    :root {
+      --primary-color: #000000;
+      --secondary-color: #0A0A0A;
+      --accent-color: #FFFFFF;
+      --text-color: #FFFFFF;
+      --highlight-color: #FFFF00;
+      --logo-color: #FFFF00;
+    }
+  }
+</style>
+</head>
+<body>
+  <div id="overlay">
+    <div id="password-popup" style="
+  border: 2px solid #0000FF;
+  position: relative;
+  overflow: hidden;
+">
+  <h2>Entrez le code d'accès</h2>
+  <input type="password" id="password-input" placeholder="Code d'accès" style="
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  font-size: 1rem;
+  width: 250px;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+">
+  <button onclick="checkPassword()">Valider</button>
+
+  <div class="fluorescent-border"></div>
+
+  <style>
+    @keyframes rotateBorder {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .fluorescent-border {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      border: 2px solid #0000FF;
+      border-radius: 50%;
+      animation: rotateBorder 4s linear infinite;
+      pointer-events: none;
+    }
+
+    #password-popup {
+      background-color: var(--secondary-color);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      z-index: 1;
+    }
+  </style>
+</div>
+  </div>
+
+  <header class="blurred">
+    <nav>
+      <div id="digital-clock" style="
+  border: 2px solid var(--accent-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgba(98, 0, 238, 0.1);
+  display: inline-block;
+"></div>
+      <div class="logo" style="
+      border: 2px solid var(--accent-color);
+      padding: 10px;
+      border-radius: 8px;
+      display: inline-block;
+      color: #0000FF;
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+    ">Boite à outils</div>
+      <div class="nav-links">
+        <a href="#comments">Commentaires</a>
+        <a href="#in-development">En cours de développement</a>
+        <a href="#favorites">Favoris</a>
+      </div>
+      <button id="theme-toggle" onclick="toggleTheme()" style="
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="blurred">
+    <section id="ai-tools" class="tool-card">
+      <h2>Outils IA</h2>
+      <p>Utilitaires avancés propulsés par l'IA pour diverses tâches.</p>
+      <button onclick="openAITools()">Lancer la Suite IA</button>
+    </section>
+
+    <section id="math-tools" class="tool-card">
+      <h2>Outils Mathématiques</h2>
+      <p>Calculatrices et solveurs mathématiques complets.</p>
+      <button onclick="openMathTools()">Ouvrir le Labo Math</button>
+    </section>
+
+    <section id="science-tools" class="tool-card">
+      <h2>Outils Scientifiques</h2>
+      <p>Simulations scientifiques de pointe et analyse de données.</p>
+      <button onclick="openScienceTools()">Entrer dans le Hub Scientifique</button>
+    </section>
+
+    <section id="vr-tools" class="tool-card">
+      <h2>Outils VR</h2>
+      <p>Expériences immersives en réalité virtuelle et kit de développement.</p>
+      <button onclick="openVRTools()">Accéder au Studio VR</button>
+    </section>
+
+    <section id="hacking-tools" class="tool-card">
+      <h2>Outils Hacking</h2>
+      <p>Suite d'outils pour la sécurité informatique et le pentesting.</p>
+      <button onclick="openHackingTools()">Lancer le Lab Hacking</button>
+    </section>
+
+    <section id="linux-tools" class="tool-card">
+      <h2>Outils Linux</h2>
+      <p>Utilitaires et scripts pour l'administration système Linux.</p>
+      <button onclick="openLinuxTools()">Ouvrir la Console Linux</button>
+    </section>
+
+    <section id="archive-tools" class="tool-card">
+      <h2>Archives</h2>
+      <p>Gestionnaire d'archives et de fichiers historiques.</p>
+      <button onclick="openArchiveTools()">Explorer les Archives</button>
+    </section>
+
+    <section id="fmhy-tools" class="tool-card">
+      <h2>FMHY</h2>
+      <p>Accès à la collection FreeMediaHeckYeah de ressources.</p>
+      <button onclick="openFMHYTools()">Découvrir FMHY</button>
+    </section>
+
+    <section id="other-tools" class="tool-card">
+      <h2>Autres Outils</h2>
+      <p>Utilitaires divers et fonctionnalités expérimentales.</p>
+      <button onclick="openOtherTools()">Explorer Plus</button>
+    </section>
+  </main>
+
+  <footer style="width: auto; padding: 5px 0; font-size: 0.8em; position: relative; max-width: 80%; margin: 0 auto; text-align: center;">
+  <p>© 2023 PLESI Enzo</p>
+  <script>
+    const footer = document.querySelector('footer');
+    
+    function checkFooterVisibility() {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const bodyHeight = document.body.offsetHeight;
+      
+      if (scrollPosition >= bodyHeight - 10) {
+        footer.style.opacity = '1';
+        footer.style.visibility = 'visible';
+      } else {
+        footer.style.opacity = '0';
+        footer.style.visibility = 'hidden';
+      }
+    }
+
+    window.addEventListener('scroll', checkFooterVisibility);
+    window.addEventListener('resize', checkFooterVisibility);
+    
+    // Initial check
+    checkFooterVisibility();
+  </script>
+  <style>
+    footer {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
+</footer>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('password-input').value;
+      if (password === '1789') {
+        document.getElementById('overlay').style.display = 'none';
+        document.querySelector('header').classList.remove('blurred');
+        document.querySelector('main').classList.remove('blurred');
+      } else {
+        alert('Code incorrect. Veuillez réessayer.');
+      }
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Tool launch functions (to be implemented)
+    function openAITools() {
+      console.log("Ouverture des Outils IA...");
+    }
+
+    function openMathTools() {
+      console.log("Ouverture des Outils Mathématiques...");
+    }
+
+    function openScienceTools() {
+      console.log("Ouverture des Outils Scientifiques...");
+    }
+
+    function openVRTools() {
+      console.log("Ouverture des Outils VR...");
+    }
+
+    function openHackingTools() {
+      console.log("Ouverture des Outils Hacking...");
+    }
+
+    function openLinuxTools() {
+      console.log("Ouverture des Outils Linux...");
+    }
+
+    function openArchiveTools() {
+      console.log("Ouverture des Archives...");
+    }
+
+    function openFMHYTools() {
+      console.log("Ouverture des Outils FMHY...");
+    }
+
+    function openOtherTools() {
+      console.log("Ouverture des Autres Outils...");
+    }
+
+    // Add a subtle glow effect to tool cards on hover
+    const toolCards = document.querySelectorAll('.tool-card');
+    toolCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.boxShadow = `0 0 20px ${getComputedStyle(document.documentElement).getPropertyValue('--highlight-color')}`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+      });
+    });
+
+    // Theme toggle function
+    function toggleTheme() {
+      const body = document.body;
+      if (body.getAttribute('data-theme') === 'light') {
+        body.removeAttribute('data-theme');
+        document.getElementById('theme-toggle').innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        `;
+      } else {
+        body.setAttribute('data-theme', 'light');
+        document.getElementById('theme-toggle').innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        `;
+      }
+    }
+
+    // Add keyboard navigation for accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        const focusableElements = document.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+
+    // Digital clock function
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('digital-clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Update clock every second
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call to display time immediately
+  </script>
+
+</body></html>
