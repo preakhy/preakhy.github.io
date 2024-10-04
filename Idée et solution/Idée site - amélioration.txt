@@ -1,0 +1,25 @@
+Version de l'OS (système d'exploitation)
+Type de navigateur (Chrome, Firefox, etc.)
+Version du navigateur
+Taille de la mémoire (RAM) disponible
+Processeur (CPU) utilisé
+Vitesse de connexion Internet (mesurée ou estimée)
+Type de connexion (Wi-Fi, Ethernet, etc.)
+Nombre d'onglets ouverts dans le navigateur
+Historique de navigation (nombre de pages visitées durant la session)
+Adresse de l'utilisateur (latitude et longitude via géolocalisation)
+Heure et date système locale de l'utilisateur
+Niveau de luminosité de l'écran (si accessible via l'API)
+Notifications de l'utilisateur (activées ou désactivées dans le navigateur)
+Temps d'activité de l'appareil (depuis combien de temps l'appareil est en marche)
+Informations sur le GPU (processeur graphique utilisé)
+Type d'affichage (moniteur unique ou plusieurs moniteurs)
+Mode d'économie d'énergie (activé ou désactivé)
+Résolution audio (qualité et fréquence de l'audio supportée par le système)
+Plugins actifs dans le navigateur
+Support des services Bluetooth (actif ou non sur l'appareil)
+Capteurs disponibles (comme l'accéléromètre, gyroscope, etc. pour appareils mobiles)
+Microphone activé/désactivé
+Caméra activée/désactivée
+Applications Web installées (via PWA ou autres)
+État de la batterie de périphériques connectés (comme des écouteurs sans fil)

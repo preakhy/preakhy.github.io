@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dactylographie</title>
+    <link rel="stylesheet" href="style-dacty.css">
+</head>
+<body>
+    <header>
+        <h1>Test de dactylographie</h1>
+    </header>
+    <main>
+        <div class="card">
+            <div id="wordDisplayContainer">
+                <strong>Mots à taper :</strong>
+                <span id="wordDisplay"></span>
+            </div>
+
+            <div id="currentWordContainer">
+                <span id="currentWordDisplay"></span>
+            </div>
+
+            <input type="text" id="typingInput" autocomplete="off" placeholder="Tapez ici...">
+
+            <div id="statsContainer">
+                <div id="charCountDisplay"></div>
+                <div id="wordCountDisplay"></div>
+                <div id="wpmDisplay"></div>
+            </div>
+
+            <button id="resetButton">Réinitialiser le test</button>
+        </div>
+    </main>
+    <script src="script-dacty.js"></script>
+</body>
+</html>

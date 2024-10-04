@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <base href="myhub.local" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon Hub Perso</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="">
+      <nav>
+        <div id="digital-clock"></div>
+        <button id="info-button" onclick="showSystemInfo()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-info"
+            width="20"
+            height="20"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="8"></line>
+          </svg>
+        </button>
+        <div class="Logo">Boite à outils</div>
+        <div class="nav-links">
+          <a href="#comments">Commentaires</a>
+          <a href="#in-development">En cours de développement</a>
+          <a href="#favorites">Favoris</a>
+        </div>
+        <button id="theme-toggle" onclick="toggleTheme()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main class="">
+      <section id="ai-tools" class="tool-card">
+        <h2>Outils IA</h2>
+        <p>Utilitaires avancés propulsés par l'IA pour diverses tâches.</p>
+        <button
+          onclick="window.location.href='/outilsAi'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Lancer la Suite IA
+        </button>
+      </section>
+
+      <section id="math-tools" class="tool-card">
+        <h2>Outils Mathématiques</h2>
+        <p>Calculatrices et solveurs mathématiques complets.</p>
+        <button
+          onclick="window.location.href='/outilsMath'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Ouvrir le Labo Math
+        </button>
+      </section>
+
+      <section id="science-tools" class="tool-card">
+        <h2>Outils Scientifiques</h2>
+        <p>Simulations scientifiques de pointe et analyse de données.</p>
+        <button
+          onclick="window.location.href='/outilsScience'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Entrer dans le Hub Scientifique
+        </button>
+      </section>
+
+      <section id="vr-tools" class="tool-card">
+        <h2>Outils VR</h2>
+        <p>
+          Expériences immersives en réalité virtuelle et kit de développement.
+        </p>
+        <button
+          onclick="window.location.href='/outilsVR'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Accéder au Studio VR
+        </button>
+      </section>
+
+      <section id="hacking-tools" class="tool-card">
+        <h2>Outils Hacking</h2>
+        <p>Suite d'outils pour la sécurité informatique et le pentesting.</p>
+        <button
+          onclick="window.location.href='/outilsHacking'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Lancer le Lab Hacking
+        </button>
+      </section>
+
+      <section id="linux-tools" class="tool-card">
+        <h2>Outils Linux</h2>
+        <p>Utilitaires et scripts pour l'administration système Linux.</p>
+        <button
+          onclick="window.location.href='/outilsLinux'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Ouvrir la Console Linux
+        </button>
+      </section>
+
+      <section id="archive-tools" class="tool-card">
+        <h2>Archives</h2>
+        <p>Gestionnaire d'archives et de fichiers historiques.</p>
+        <button
+          onclick="window.location.href='/outilsArchive'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Explorer les Archives
+        </button>
+      </section>
+
+      <section id="fmhy-tools" class="tool-card">
+        <h2>FMHY</h2>
+        <p>Accès à la collection FreeMediaHeckYeah de ressources.</p>
+        <button
+          onclick="window.location.href='/outilsFMHY'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Découvrir FMHY
+        </button>
+      </section>
+
+      <section id="other-tools" class="tool-card">
+        <h2>Autres Outils</h2>
+        <p>Utilitaires divers et fonctionnalités expérimentales.</p>
+        <button
+          onclick="window.location.href='/outilsAutres'"
+          style="
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            display: block;
+            margin: 0 auto;
+          "
+        >
+          Explorer Plus
+        </button>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2023 PLESI Enzo</p>
+    </footer>
+
+      <script src="script.js"></script>
+  </body>
+</html>

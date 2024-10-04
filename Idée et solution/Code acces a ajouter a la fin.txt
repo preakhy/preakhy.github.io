@@ -1,0 +1,25 @@
+Script :    
+
+ function checkPassword() {
+      const password = document.getElementById('password-input').value;
+      if (password === '1789') {
+        document.getElementById('overlay').style.display = 'none';
+        document.querySelector('header').classList.remove('blurred');
+        document.querySelector('main').classList.remove('blurred');
+      } else {
+        alert('Code incorrect. Veuillez réessayer.');
+      }
+    }
+
+html : 
+
+<div id="overlay">
+    <div id="password-popup">
+      <h2>Entrez le code d'accès</h2>
+      <input type="password" id="password-input" placeholder="Code d'accès">
+      <button onclick="checkPassword()">Valider</button>
+      <div class="fluorescent-border"></div>
+    </div>
+  </div>
+
+remettre "blurred" a <main class=""> et <header class="">

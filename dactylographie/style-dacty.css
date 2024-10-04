@@ -1,0 +1,128 @@
+:root {
+    /* Dark theme (default) */
+    --primary-color: #000000;
+    --secondary-color: #0f0f0f;
+    --accent-color: #485e74;
+    --text-color: #e0e0e0;
+    --highlight-color: #929292;
+    --logo-color: #0000ff;
+    --hacking-color: #00ff00; /* Vert */
+    --linux-color: #ff0000; /* Rouge */
+    --archive-color: #9c27b0;
+    --fmhy-color: #ff4081;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+h1 {
+    color: var(--logo-color);
+    margin: 0;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#wordDisplayContainer {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#currentWordContainer {
+    font-size: 2em;
+    margin-bottom: 20px;
+    border: 2px solid var(--accent-color);
+    padding: 5px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+#typingInput {
+    font-size: 1.5em;
+    padding: 10px;
+    width: 100%;
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Couleur pour les lettres correctes et incorrectes */
+.correct-letter {
+    color: var(--hacking-color); /* Vert */
+}
+
+.incorrect-letter {
+    color: var(--linux-color); /* Rouge */
+}
+
+/* Animation tremblement */
+.error {
+    animation: shake 0.2s;
+}
+
+/* Animation tremblement */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.correct-word {
+    text-decoration: line-through;
+    color: var(--highlight-color);
+}
+
+#statsContainer {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: var(--highlight-color);
+}
